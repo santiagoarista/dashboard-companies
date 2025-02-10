@@ -42,10 +42,8 @@ export function SidebarRoutes() {
                         Upgrade Plan
                     </Button>
                 </div>
-
                 <Separator />
-
-                <footer className="mt-3 p-3 text-center">
+                <footer className="mt-3 p-3 text-center xl:p-0 xl:text-sm ">
                     2025. All rights reserved. ©
                 </footer>
             </div>
