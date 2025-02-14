@@ -13,7 +13,7 @@ import { dataTotalSubscribers } from './TotalSubscribers.data';
 
 export function TotalSubscribers(){
     return (
-        <div className="mb-4 lg:mb-0 shadow-sm bg-background rounded-lg p-5 w-full md:w-96 hover: shadow-lg transition">
+        <div className="mb-4 lg:mb-0 shadow-sm bg-background rounded-lg p-5 w-full xl:w-96 hover: shadow-lg transition">
             <div className="flex gap-x-2 mb-4 items-center">
                 <CustomIcon icon={Percent}/>
                 <p className="text-xl">Total Subscribers</p>
