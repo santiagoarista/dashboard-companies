@@ -2,13 +2,8 @@ import type { Metadata } from "next";
 import { Noto_Sans_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs';
+import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 
 const notoSansDisplay = Noto_Sans_Display({
@@ -40,6 +35,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
           {children}
+          <Toaster/>
           </ThemeProvider>
         </body>
       </html>
