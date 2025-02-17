@@ -3,21 +3,21 @@ import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { Header } from './components/Header'
 
-export default async function CompanyIdPage(params: {companyId: string}){
+export default async function CompanyIdPage({ params }: { params: { companyId: string } }) {
     const { userId } = await auth()
 
-    if(!userId){
+    if (!userId) {
         return redirect('/')
     }
 
     const company = await db.company.findUnique({
         where: {
             id: params.companyId,
-            userId
-        }
+            userId,
+        },
     })
 
-    if (!company){
+    if (!company) {
         return redirect('/')
     }
 
@@ -26,5 +26,4 @@ export default async function CompanyIdPage(params: {companyId: string}){
             <Header/>
         </div>
     )
-
 }
