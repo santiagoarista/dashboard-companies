@@ -3,6 +3,7 @@ import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import { Header } from './components/Header'
 import { CompanyInformation } from './components/CompanyInformation'
+import { FooterCompany } from './components/FooterCompany'
 
 export async function generateStaticParams() {
     return []; // 👈 Required to avoid hydration issues
@@ -42,6 +43,7 @@ export default async function CompanyIdPage({ params }: { params: { companyId: s
         <div>
             <Header />
             <CompanyInformation company={company}/>
+            <FooterCompany companyId={company.id}/>
         </div>
     );
 }

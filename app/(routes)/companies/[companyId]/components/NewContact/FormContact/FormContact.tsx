@@ -77,9 +77,23 @@ export function FormContact(props: FormContactProps){
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Role</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Contact's role..." type="text" {...field} />
-                            </FormControl>
+                            <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                            >
+                                <FormControl>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder='Select role'/>
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="CEO">CEO</SelectItem>
+                                    <SelectItem value="Engineer">Engineer</SelectItem>
+                                    <SelectItem value="Admin">Admin</SelectItem>
+                                    <SelectItem value="HR">HR</SelectItem>
+                                    <SelectItem value="Agent">Agent</SelectItem>
+                                </SelectContent>
+                            </Select>
                             <FormMessage />
                         </FormItem>
                     )}
