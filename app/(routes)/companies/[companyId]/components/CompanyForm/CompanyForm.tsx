@@ -44,9 +44,23 @@ export function CompanyForm(props: CompanyFormnProps){
         }
     })
 
-    const onSubmit = async (values: z.infer<typeof formSchema>) => (
-        console.log('on submit')
-    )
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        try {
+            await axios.patch(`/api/company/${company.id}`, values);
+            toast({
+                title: 'Company updated!',
+            });
+
+            router.refresh(); // Ensure the new data is loaded
+            router.push('/companies'); // Now navigate to the new page
+
+        } catch (error) {
+            toast({
+                title: 'Something went wrong.',
+                variant: 'destructive',
+            });
+        }
+    };
 
     return(
         <Form {...form}>
@@ -185,7 +199,23 @@ export function CompanyForm(props: CompanyFormnProps){
                         </FormItem>
                     )}
                     />
+                    <FormField 
+                        control={form.control} 
+                        name="description" 
+                        render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Company's Description</FormLabel>
+                            <FormControl>
+                                <Textarea 
+                                    placeholder="Description..." {...field}
+                                    value={form.getValues().description ?? ''} />
+                            </FormControl>
+                            <FormMessage/>
+                        </FormItem>
+                    )}
+                    />
                 </div>
+                <Button type="submit">Edit Company</Button>
             </form>
         </Form>
     )
